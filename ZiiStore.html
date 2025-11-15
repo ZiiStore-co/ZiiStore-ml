@@ -39,10 +39,14 @@ select:focus{border-color:#ffb300;box-shadow:0 0 14px rgba(255,179,0,0.55);}
   .pay-methods { grid-template-columns: 1fr 1fr; gap:10px; }
   .diamond-item{font-size:14px;padding:13px;}
 }
-@media (max-width: 480px){body{padding:15px;} .container{padding:15px;} .socials{flex-direction:column;gap:10px;} .category-page{grid-template-columns:1fr;} .notif{width:90%!important;left:5%!important;}}
+@media (max-width: 480px){body{padding:15px;} .container{padding:15px;} .socials{flex-direction:column;gap:10px;} .category-page{grid-template-columns:1fr;} .notif{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#222;padding:14px 18px;border-radius:12px;border:1px solid #333;box-shadow:0 6px 16px rgba(0,0,0,0.45);display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;z-index:9999;width:90%;max-width:360px;justify-content:center;}}
 </style>
 </head>
 <body>
+<div style="position:fixed; top:20px; right:20px; z-index:9999; display:flex; gap:10px;">
+  <button onclick="setMobileMode()" style="padding:10px 14px; border-radius:10px; border:none; background:#ffb300; color:#000; font-weight:600; cursor:pointer;">Mobile</button>
+  <button onclick="setDesktopMode()" style="padding:10px 14px; border-radius:10px; border:none; background:#444; color:#fff; font-weight:600; cursor:pointer;">Desktop</button>
+</div>
   <div style="text-align:center; margin-top:20px; margin-bottom:10px;">
   <img src="https://i.ibb.co.com/LDx7hgL4/cfc7e0d2-8c5d-4f79-aa82-bbf712621dab.png" alt="ZIISTORE" style="width:260px;max-width:85%;filter:drop-shadow(0 0 18px rgba(255,170,0,0.45));border-radius:12px;">
 </div>
@@ -397,5 +401,35 @@ wdpTab.addEventListener('click',()=>{wdpNotif.style.display='flex';});
 closeWdp.addEventListener('click',()=>{wdpNotif.style.display='none';});
 </script>
 
+<script>
+function setMobileMode(){
+  document.body.style.maxWidth='390px';
+  document.body.style.margin='0 auto';
+  document.body.style.border='1px solid #444';
+  document.body.style.borderRadius='18px';
+  document.body.style.background='#000';
+
+  const container=document.querySelector('.container');
+  if(container){
+    container.style.width='100%';
+    container.style.margin='10px auto';
+    container.style.padding='18px';
+    container.style.boxSizing='border-box';
+  }
+}
+function setDesktopMode(){
+  document.body.style.maxWidth='100%';
+  document.body.style.margin='';
+  document.body.style.border='';
+  document.body.style.borderRadius='';
+
+  const container=document.querySelector('.container');
+  if(container){
+    container.style.width='';
+    container.style.margin='auto';
+    container.style.padding='20px';
+  }
+}
+</script>
 </body>
 </html>
