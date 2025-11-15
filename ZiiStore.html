@@ -432,5 +432,14 @@ function setDesktopMode(){
   }
 }
 </script>
+<script>
+function autoDetectMode(){
+  const width = window.innerWidth;
+  if(width <= 768){ setMobileMode(); }
+  else{ setDesktopMode(); }
+}
+window.addEventListener('load', autoDetectMode);
+window.addEventListener('resize', autoDetectMode);
+</script>
 </body>
 </html>
